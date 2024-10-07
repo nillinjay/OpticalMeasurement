@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>preview.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>
+<h1 id="experiment10">experiment10</h1>
+<blockquote>
+<p><em><strong>author:nillin</strong></em><br>
+<em><strong>time:2024.10.7</strong></em></p>
+</blockquote>
+<h2 id="part1-%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A">part1 相机标定</h2>
+<p><img src="file:///media/nil/storage/光学实验/exp_10/image.png" alt="alt text"></p>
+<p>如图所示，我们假定实际物理坐标系为$oxyz$(即我们假定某点在物理世界中的坐标),相机坐标系为$o_cx_cy_cz_c$（指代中间的汇聚中心</p>
+<ol>
+<li>
+<p>第一步映射为等效像平面物理坐标到传感器cmos平面的映射
+<img src="file:///media/nil/storage/光学实验/exp_10/image-1.png" alt="alt text"><br>
+其中，$uv1$代表着cmos上的坐标，其中，1意味着坐标平面对于相机坐标系的距离是单位一。这个公式就是很简单的除法，用实际坐标除以pixel得到cmos上的像素坐标。</p>
+</li>
+<li>
+<p>第二步映射为相机坐标系下物面到等效像面的映射<br>
+<img src="file:///media/nil/storage/光学实验/exp_10/image-2.png" alt="alt text"><br>
+其中，$x_{cp}y_{cp}z_{cp}$指pw的坐标，$xy1$指虚拟像面的坐标，$f$是焦距,这是一个简单的相似变换</p>
+</li>
+<li>
+<p>第三步是物坐标从物理世界坐标到相机坐标的映射<br>
+<img src="file:///media/nil/storage/光学实验/exp_10/image-3.png" alt="alt text"><br>
+其中，R,T分别为旋转和平移矩阵，用于调整两个坐标的姿态关系</p>
+</li>
+</ol>
+<p>于是，我们的到了从物理世界实际物点坐标到相机平面坐标的变换矩阵。<br>
+<img src="file:///media/nil/storage/光学实验/exp_10/image-4.png" alt="alt text"><br>
+其中$\alpha=f/dx$,$\beta=f/dy$,𝐴𝑚1为内部参数矩阵，由α、β、𝑢0和𝑣0组成，它取决于相机的内部结构；矩阵𝐴𝑚2为外部参数矩阵，由𝑅和𝑇所构成，用来表征相机在界坐坐标系下的姿态关系。在一般情况下，由于相差，会引入一个额外的矩阵来表示，这里用的是小孔成像，理论上不会有相差。</p>
+<h2 id="part2-%E7%A9%BA%E9%97%B4%E8%BD%BD%E6%B3%A2%E7%9B%B8%E4%BD%8D%E6%8F%90%E5%8F%96%E6%B3%95">part2 空间载波相位提取法</h2>
+<p><strong>用于求解偏折前坐标</strong><br>
+由于本次相关的物理量是流体场，所以我们采用投射偏折术测量投射率<br>
+本段的数学公式较多，我省略具体计算过程和数学公式进行叙述大体思路。</p>
+<ol>
+<li>通过最下二乘法优化构建相位差因子$\delta(x,y)$的表达形式为
+$$\delta_y(x,y)=a\cos(\frac{B_y-\sqrt{B_y^2+4A_y^2}}{4A_y}-0.5)$$</li>
+</ol>
+<p><img src="file:///media/nil/storage/光学实验/exp_10/image-10.png" alt="alt text"><br>
+后续我们可以使用累积相位增量来表达领域内各点相对该点的相位增量。<br>
+<img src="file:///media/nil/storage/光学实验/exp_10/image-11.png" alt="alt text"><br>
+后续可以通过3.2.10-3.2.14的方法得到领域点的相位$\psi$值。</p>
+<h2 id="part3-%E5%81%8F%E6%8A%98%E6%9C%AF%E6%B5%8B%E9%87%8F%E6%B5%81%E5%9C%BA%E5%AF%86%E5%BA%A6%E5%88%86%E5%B8%83">part3 偏折术测量流场密度分布</h2>
+<p><img src="file:///media/nil/storage/光学实验/exp_10/image-5.png" alt="alt text">
+如图所示，蓝色光线是偏折后的光线，红色光线是原光线。利用简单的两角差公式和反正切公式，我们可以得到x轴和y轴的偏折角，具体如图所示<br>
+<img src="file:///media/nil/storage/光学实验/exp_10/image-6.png" alt="alt text"><br>
+其中$C(x_c,y_c,z_c)$为相机投影中心在世界坐标下的坐标（实际物理坐标，我的理解是简化计算量，由于cmos的物理尺寸较实际光学系统为小量），这个坐标可以通过下面的公式计算<br>
+<img src="file:///media/nil/storage/光学实验/exp_10/image-7.png" alt="alt text"><br>
+$M(x_m,y_m,z_m)$是流场的坐标，可以通过简单的平面坐标变换得到，如图所示<br>
+<img src="file:///media/nil/storage/光学实验/exp_10/image-8.png" alt="alt text"><br>
+其中，$(S_0(x_{s0},y_{s0},z_{s0}))$ 是流场无扰动时光源点的界坐坐标，可以通过空间载
+波正交条纹相位提取算法得到。<br>
+这样我们就得到了流场每一点的折射角就确定了，通过Gladston-Dale 关系（𝑛=1+𝐾𝜌）<br>
+<img src="file:///media/nil/storage/光学实验/exp_10/image-9.png" alt="alt text"><br>
+<strong>conculusion:</strong>
+<strong>将偏折角和密度联系起来</strong></p>
+<h2 id="%E5%AE%9E%E9%AA%8C%E6%93%8D%E4%BD%9C">实验操作</h2>
+
+</body>
+</html>
